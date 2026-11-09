@@ -9,7 +9,6 @@ import tempfile
 import cv2
 
 from pose_data import JOINTS
-from video_reader import VideoReader
 
 # RTMLib's coco17 palette is passed directly to OpenCV in BGR order.
 ORANGE = (51, 153, 255)
@@ -69,6 +68,7 @@ def export_video(data, video_path, destination, frame_base, expected_size=None, 
     writer = None
     temporary = None
     try:
+        from video_reader import VideoReader
         capture = VideoReader(video_path)
         count = capture.count
         fps = capture.fps
